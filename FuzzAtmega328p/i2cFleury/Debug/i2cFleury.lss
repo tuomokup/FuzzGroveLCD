@@ -1,0 +1,452 @@
+
+i2cFleury.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000c  00800100  000002c0  00000334  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000002c0  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  00000340  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000370  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000088  00000000  00000000  000003b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000e01  00000000  00000000  00000438  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000089e  00000000  00000000  00001239  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000675  00000000  00000000  00001ad7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000100  00000000  00000000  0000214c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000445  00000000  00000000  0000224c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000593  00000000  00000000  00002691  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000068  00000000  00000000  00002c24  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e0 ec       	ldi	r30, 0xC0	; 192
+  7c:	f2 e0       	ldi	r31, 0x02	; 2
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	ac 30       	cpi	r26, 0x0C	; 12
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 4b 00 	call	0x96	; 0x96 <main>
+  8e:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <main>:
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  96:	2f ef       	ldi	r18, 0xFF	; 255
+  98:	86 e7       	ldi	r24, 0x76	; 118
+  9a:	91 e0       	ldi	r25, 0x01	; 1
+  9c:	21 50       	subi	r18, 0x01	; 1
+  9e:	80 40       	sbci	r24, 0x00	; 0
+  a0:	90 40       	sbci	r25, 0x00	; 0
+  a2:	e1 f7       	brne	.-8      	; 0x9c <main+0x6>
+  a4:	00 c0       	rjmp	.+0      	; 0xa6 <main+0x10>
+  a6:	00 00       	nop
+#define addr 0x3E      // device address of Grove LCD, see datasheet
+
+int main(void)
+{
+	_delay_ms(30);
+	i2c_init();                             // initialize I2C library
+  a8:	0e 94 a8 00 	call	0x150	; 0x150 <i2c_init>
+  ac:	8f e3       	ldi	r24, 0x3F	; 63
+  ae:	9f e1       	ldi	r25, 0x1F	; 31
+  b0:	01 97       	sbiw	r24, 0x01	; 1
+  b2:	f1 f7       	brne	.-4      	; 0xb0 <main+0x1a>
+  b4:	00 c0       	rjmp	.+0      	; 0xb6 <main+0x20>
+  b6:	00 00       	nop
+	
+	_delay_ms(2);
+	// write 0x75 to EEPROM address 5 (Byte Write)
+	i2c_start_wait(addr<<I2C_WRITE);     // set device address and write mode
+  b8:	8c e7       	ldi	r24, 0x7C	; 124
+  ba:	0e 94 dd 00 	call	0x1ba	; 0x1ba <i2c_start_wait>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  be:	9a e6       	ldi	r25, 0x6A	; 106
+  c0:	9a 95       	dec	r25
+  c2:	f1 f7       	brne	.-4      	; 0xc0 <main+0x2a>
+  c4:	00 c0       	rjmp	.+0      	; 0xc6 <main+0x30>
+	_delay_us(20);
+	i2c_write(LCD_SETDDRAMADDR);
+  c6:	80 e8       	ldi	r24, 0x80	; 128
+  c8:	0e 94 0a 01 	call	0x214	; 0x214 <i2c_write>
+  cc:	2a e6       	ldi	r18, 0x6A	; 106
+  ce:	2a 95       	dec	r18
+  d0:	f1 f7       	brne	.-4      	; 0xce <main+0x38>
+  d2:	00 c0       	rjmp	.+0      	; 0xd4 <main+0x3e>
+	_delay_us(20);
+	i2c_write(0x28);	//Brightness
+  d4:	88 e2       	ldi	r24, 0x28	; 40
+  d6:	0e 94 0a 01 	call	0x214	; 0x214 <i2c_write>
+	i2c_stop();
+  da:	0e 94 02 01 	call	0x204	; 0x204 <i2c_stop>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  de:	8f e3       	ldi	r24, 0x3F	; 63
+  e0:	9f e1       	ldi	r25, 0x1F	; 31
+  e2:	01 97       	sbiw	r24, 0x01	; 1
+  e4:	f1 f7       	brne	.-4      	; 0xe2 <main+0x4c>
+  e6:	00 c0       	rjmp	.+0      	; 0xe8 <main+0x52>
+  e8:	00 00       	nop
+	_delay_ms(2);
+	
+	INSTRUCTIONset(addr, LCD_SETDDRAMADDR, 0x0C);
+  ea:	4c e0       	ldi	r20, 0x0C	; 12
+  ec:	60 e8       	ldi	r22, 0x80	; 128
+  ee:	8e e3       	ldi	r24, 0x3E	; 62
+  f0:	0e 94 1c 01 	call	0x238	; 0x238 <INSTRUCTIONset>
+	
+	INSTRUCTIONset(addr, LCD_SETDDRAMADDR, LCD_CLEARDISPLAY);
+  f4:	41 e0       	ldi	r20, 0x01	; 1
+  f6:	60 e8       	ldi	r22, 0x80	; 128
+  f8:	8e e3       	ldi	r24, 0x3E	; 62
+  fa:	0e 94 1c 01 	call	0x238	; 0x238 <INSTRUCTIONset>
+	
+	INSTRUCTIONset(addr, LCD_SETDDRAMADDR, 0x06);  //INPUT SET
+  fe:	46 e0       	ldi	r20, 0x06	; 6
+ 100:	60 e8       	ldi	r22, 0x80	; 128
+ 102:	8e e3       	ldi	r24, 0x3E	; 62
+ 104:	0e 94 1c 01 	call	0x238	; 0x238 <INSTRUCTIONset>
+ 108:	8f e3       	ldi	r24, 0x3F	; 63
+ 10a:	9f e1       	ldi	r25, 0x1F	; 31
+ 10c:	01 97       	sbiw	r24, 0x01	; 1
+ 10e:	f1 f7       	brne	.-4      	; 0x10c <main+0x76>
+ 110:	00 c0       	rjmp	.+0      	; 0x112 <main+0x7c>
+ 112:	00 00       	nop
+	
+	_delay_ms(2);
+	
+	Print(addr, "HELLO");
+ 114:	60 e0       	ldi	r22, 0x00	; 0
+ 116:	71 e0       	ldi	r23, 0x01	; 1
+ 118:	8e e3       	ldi	r24, 0x3E	; 62
+ 11a:	0e 94 43 01 	call	0x286	; 0x286 <Print>
+	
+	INSTRUCTIONset(addr, LCD_SETDDRAMADDR, 0xC0);  // Shift to the second line
+ 11e:	40 ec       	ldi	r20, 0xC0	; 192
+ 120:	60 e8       	ldi	r22, 0x80	; 128
+ 122:	8e e3       	ldi	r24, 0x3E	; 62
+ 124:	0e 94 1c 01 	call	0x238	; 0x238 <INSTRUCTIONset>
+	
+	Print(addr, "World");
+ 128:	66 e0       	ldi	r22, 0x06	; 6
+ 12a:	71 e0       	ldi	r23, 0x01	; 1
+ 12c:	8e e3       	ldi	r24, 0x3E	; 62
+ 12e:	0e 94 43 01 	call	0x286	; 0x286 <Print>
+	
+	while(1)
+	{
+		INSTRUCTIONset(addr, LCD_SETDDRAMADDR, 0x14);
+ 132:	44 e1       	ldi	r20, 0x14	; 20
+ 134:	60 e8       	ldi	r22, 0x80	; 128
+ 136:	8e e3       	ldi	r24, 0x3E	; 62
+ 138:	0e 94 1c 01 	call	0x238	; 0x238 <INSTRUCTIONset>
+ 13c:	9f ef       	ldi	r25, 0xFF	; 255
+ 13e:	23 ed       	ldi	r18, 0xD3	; 211
+ 140:	80 e3       	ldi	r24, 0x30	; 48
+ 142:	91 50       	subi	r25, 0x01	; 1
+ 144:	20 40       	sbci	r18, 0x00	; 0
+ 146:	80 40       	sbci	r24, 0x00	; 0
+ 148:	e1 f7       	brne	.-8      	; 0x142 <main+0xac>
+ 14a:	00 c0       	rjmp	.+0      	; 0x14c <main+0xb6>
+ 14c:	00 00       	nop
+ 14e:	f1 cf       	rjmp	.-30     	; 0x132 <main+0x9c>
+
+00000150 <i2c_init>:
+	TWCR = (1<<TWINT) | (1<<TWEN);
+	while(!(TWCR & (1<<TWINT)));
+	
+    return TWDR;
+
+}/* i2c_readNak */
+ 150:	87 b1       	in	r24, 0x07	; 7
+ 152:	8f 7c       	andi	r24, 0xCF	; 207
+ 154:	87 b9       	out	0x07, r24	; 7
+ 156:	88 b1       	in	r24, 0x08	; 8
+ 158:	8f 7c       	andi	r24, 0xCF	; 207
+ 15a:	88 b9       	out	0x08, r24	; 8
+ 15c:	10 92 b9 00 	sts	0x00B9, r1	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+ 160:	88 e4       	ldi	r24, 0x48	; 72
+ 162:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7f80b8>
+ 166:	84 e0       	ldi	r24, 0x04	; 4
+ 168:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 16c:	08 95       	ret
+
+0000016e <i2c_start>:
+ 16e:	94 ea       	ldi	r25, 0xA4	; 164
+ 170:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 174:	90 91 bc 00 	lds	r25, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 178:	99 23       	and	r25, r25
+ 17a:	e4 f7       	brge	.-8      	; 0x174 <i2c_start+0x6>
+ 17c:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+ 180:	98 73       	andi	r25, 0x38	; 56
+ 182:	98 30       	cpi	r25, 0x08	; 8
+ 184:	11 f0       	breq	.+4      	; 0x18a <i2c_start+0x1c>
+ 186:	90 31       	cpi	r25, 0x10	; 16
+ 188:	91 f4       	brne	.+36     	; 0x1ae <i2c_start+0x40>
+ 18a:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+ 18e:	84 e8       	ldi	r24, 0x84	; 132
+ 190:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 194:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 198:	88 23       	and	r24, r24
+ 19a:	e4 f7       	brge	.-8      	; 0x194 <i2c_start+0x26>
+ 19c:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+ 1a0:	88 7f       	andi	r24, 0xF8	; 248
+ 1a2:	88 31       	cpi	r24, 0x18	; 24
+ 1a4:	31 f0       	breq	.+12     	; 0x1b2 <i2c_start+0x44>
+ 1a6:	80 34       	cpi	r24, 0x40	; 64
+ 1a8:	31 f4       	brne	.+12     	; 0x1b6 <i2c_start+0x48>
+ 1aa:	80 e0       	ldi	r24, 0x00	; 0
+ 1ac:	08 95       	ret
+ 1ae:	81 e0       	ldi	r24, 0x01	; 1
+ 1b0:	08 95       	ret
+ 1b2:	80 e0       	ldi	r24, 0x00	; 0
+ 1b4:	08 95       	ret
+ 1b6:	81 e0       	ldi	r24, 0x01	; 1
+ 1b8:	08 95       	ret
+
+000001ba <i2c_start_wait>:
+ 1ba:	94 ea       	ldi	r25, 0xA4	; 164
+ 1bc:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 1c0:	90 91 bc 00 	lds	r25, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 1c4:	99 23       	and	r25, r25
+ 1c6:	e4 f7       	brge	.-8      	; 0x1c0 <i2c_start_wait+0x6>
+ 1c8:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+ 1cc:	98 73       	andi	r25, 0x38	; 56
+ 1ce:	98 30       	cpi	r25, 0x08	; 8
+ 1d0:	11 f0       	breq	.+4      	; 0x1d6 <i2c_start_wait+0x1c>
+ 1d2:	90 31       	cpi	r25, 0x10	; 16
+ 1d4:	91 f7       	brne	.-28     	; 0x1ba <i2c_start_wait>
+ 1d6:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+ 1da:	94 e8       	ldi	r25, 0x84	; 132
+ 1dc:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 1e0:	90 91 bc 00 	lds	r25, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 1e4:	99 23       	and	r25, r25
+ 1e6:	e4 f7       	brge	.-8      	; 0x1e0 <i2c_start_wait+0x26>
+ 1e8:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+ 1ec:	98 73       	andi	r25, 0x38	; 56
+ 1ee:	90 32       	cpi	r25, 0x20	; 32
+ 1f0:	41 f4       	brne	.+16     	; 0x202 <i2c_start_wait+0x48>
+ 1f2:	94 e9       	ldi	r25, 0x94	; 148
+ 1f4:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 1f8:	90 91 bc 00 	lds	r25, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 1fc:	94 fd       	sbrc	r25, 4
+ 1fe:	fc cf       	rjmp	.-8      	; 0x1f8 <i2c_start_wait+0x3e>
+ 200:	dc cf       	rjmp	.-72     	; 0x1ba <i2c_start_wait>
+ 202:	08 95       	ret
+
+00000204 <i2c_stop>:
+ 204:	84 e9       	ldi	r24, 0x94	; 148
+ 206:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 20a:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 20e:	84 fd       	sbrc	r24, 4
+ 210:	fc cf       	rjmp	.-8      	; 0x20a <i2c_stop+0x6>
+ 212:	08 95       	ret
+
+00000214 <i2c_write>:
+ 214:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+ 218:	84 e8       	ldi	r24, 0x84	; 132
+ 21a:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 21e:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 222:	88 23       	and	r24, r24
+ 224:	e4 f7       	brge	.-8      	; 0x21e <i2c_write+0xa>
+ 226:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+ 22a:	88 73       	andi	r24, 0x38	; 56
+ 22c:	88 32       	cpi	r24, 0x28	; 40
+ 22e:	11 f0       	breq	.+4      	; 0x234 <i2c_write+0x20>
+ 230:	81 e0       	ldi	r24, 0x01	; 1
+ 232:	08 95       	ret
+ 234:	80 e0       	ldi	r24, 0x00	; 0
+ 236:	08 95       	ret
+
+00000238 <INSTRUCTIONset>:
+/*************************************************************************
+Sequence writing to i2c device
+*************************************************************************/
+
+uint8_t INSTRUCTIONset(uint8_t addre, uint8_t ADset, uint8_t command)
+{
+ 238:	cf 93       	push	r28
+ 23a:	df 93       	push	r29
+ 23c:	d6 2f       	mov	r29, r22
+ 23e:	c4 2f       	mov	r28, r20
+	uint8_t ret = 1;
+	if(i2c_start(addre<<I2C_WRITE)==0)     // set device address and write mode
+ 240:	88 0f       	add	r24, r24
+ 242:	0e 94 b7 00 	call	0x16e	; 0x16e <i2c_start>
+ 246:	81 11       	cpse	r24, r1
+ 248:	1a c0       	rjmp	.+52     	; 0x27e <INSTRUCTIONset+0x46>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 24a:	8a e6       	ldi	r24, 0x6A	; 106
+ 24c:	8a 95       	dec	r24
+ 24e:	f1 f7       	brne	.-4      	; 0x24c <INSTRUCTIONset+0x14>
+ 250:	00 c0       	rjmp	.+0      	; 0x252 <INSTRUCTIONset+0x1a>
+	{
+		_delay_us(20);
+		i2c_write(ADset);
+ 252:	8d 2f       	mov	r24, r29
+ 254:	0e 94 0a 01 	call	0x214	; 0x214 <i2c_write>
+ 258:	8a e6       	ldi	r24, 0x6A	; 106
+ 25a:	8a 95       	dec	r24
+ 25c:	f1 f7       	brne	.-4      	; 0x25a <INSTRUCTIONset+0x22>
+ 25e:	00 c0       	rjmp	.+0      	; 0x260 <INSTRUCTIONset+0x28>
+		_delay_us(20);
+		i2c_write(command);
+ 260:	8c 2f       	mov	r24, r28
+ 262:	0e 94 0a 01 	call	0x214	; 0x214 <i2c_write>
+ 266:	8a e6       	ldi	r24, 0x6A	; 106
+ 268:	8a 95       	dec	r24
+ 26a:	f1 f7       	brne	.-4      	; 0x268 <INSTRUCTIONset+0x30>
+ 26c:	00 c0       	rjmp	.+0      	; 0x26e <INSTRUCTIONset+0x36>
+		_delay_us(20);
+		i2c_stop();
+ 26e:	0e 94 02 01 	call	0x204	; 0x204 <i2c_stop>
+ 272:	85 ed       	ldi	r24, 0xD5	; 213
+ 274:	8a 95       	dec	r24
+ 276:	f1 f7       	brne	.-4      	; 0x274 <INSTRUCTIONset+0x3c>
+ 278:	00 00       	nop
+		_delay_us(40);
+		ret = 0;
+ 27a:	80 e0       	ldi	r24, 0x00	; 0
+ 27c:	01 c0       	rjmp	.+2      	; 0x280 <INSTRUCTIONset+0x48>
+Sequence writing to i2c device
+*************************************************************************/
+
+uint8_t INSTRUCTIONset(uint8_t addre, uint8_t ADset, uint8_t command)
+{
+	uint8_t ret = 1;
+ 27e:	81 e0       	ldi	r24, 0x01	; 1
+		i2c_stop();
+		_delay_us(40);
+		ret = 0;
+	}
+	return ret;
+}
+ 280:	df 91       	pop	r29
+ 282:	cf 91       	pop	r28
+ 284:	08 95       	ret
+
+00000286 <Print>:
+Printing string to lcd
+*************************************************************************/
+
+
+void Print(uint8_t addre, char *str)
+{
+ 286:	ff 92       	push	r15
+ 288:	0f 93       	push	r16
+ 28a:	1f 93       	push	r17
+ 28c:	cf 93       	push	r28
+ 28e:	df 93       	push	r29
+ 290:	f8 2e       	mov	r15, r24
+ 292:	8b 01       	movw	r16, r22
+	int i;
+	for(i=0; str[i]!=0; i++)
+ 294:	c0 e0       	ldi	r28, 0x00	; 0
+ 296:	d0 e0       	ldi	r29, 0x00	; 0
+ 298:	05 c0       	rjmp	.+10     	; 0x2a4 <Print+0x1e>
+	{
+		INSTRUCTIONset(addre, LCD_SETCGRAMADDR, str[i]);	
+ 29a:	60 e4       	ldi	r22, 0x40	; 64
+ 29c:	8f 2d       	mov	r24, r15
+ 29e:	0e 94 1c 01 	call	0x238	; 0x238 <INSTRUCTIONset>
+
+
+void Print(uint8_t addre, char *str)
+{
+	int i;
+	for(i=0; str[i]!=0; i++)
+ 2a2:	21 96       	adiw	r28, 0x01	; 1
+ 2a4:	f8 01       	movw	r30, r16
+ 2a6:	ec 0f       	add	r30, r28
+ 2a8:	fd 1f       	adc	r31, r29
+ 2aa:	40 81       	ld	r20, Z
+ 2ac:	41 11       	cpse	r20, r1
+ 2ae:	f5 cf       	rjmp	.-22     	; 0x29a <Print+0x14>
+	{
+		INSTRUCTIONset(addre, LCD_SETCGRAMADDR, str[i]);	
+	}
+ 2b0:	df 91       	pop	r29
+ 2b2:	cf 91       	pop	r28
+ 2b4:	1f 91       	pop	r17
+ 2b6:	0f 91       	pop	r16
+ 2b8:	ff 90       	pop	r15
+ 2ba:	08 95       	ret
+
+000002bc <_exit>:
+ 2bc:	f8 94       	cli
+
+000002be <__stop_program>:
+ 2be:	ff cf       	rjmp	.-2      	; 0x2be <__stop_program>
